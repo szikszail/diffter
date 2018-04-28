@@ -1,0 +1,46 @@
+{
+  "name": "diffter",
+  "version": "1.0.0",
+  "description": "diffter can be used to determine the difference between two list of any items and generate an HTML report about the results.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/*.spec.js",
+    "coverage": "istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js",
+    "travis": "istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "bin": {
+    "diffter-results": "./bin/diffter-results.js",
+    "diffter-report": "./bin/diffter-report.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szikszail/diffter.git"
+  },
+  "keywords": [
+    "list",
+    "diff"
+  ],
+  "author": "Laszlo Szikszai <sziklaszlo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/szikszail/diffter/issues"
+  },
+  "homepage": "https://github.com/szikszail/diffter#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5"
+  },
+  "dependencies": {
+    "clean-css": "^4.1.11",
+    "deep-eql": "^3.0.1",
+    "ejs": "^2.5.9",
+    "fs-extra": "^5.0.0",
+    "normalize.css": "^8.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "uglify-es": "^3.3.9",
+    "yargs": "^11.0.0"
+  }
+}

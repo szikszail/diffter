@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <%- include('/../../node_modules/react/umd/react.production.min.js') %>
+    <%- include('/../../node_modules/react-dom/umd/react-dom.production.min.js') %>
+    <script>
+      var DiffData = <%- JSON.stringify(results) %>;
+    </script>
+    <%- include('/js/index.js') %>
+    <%- include('/../../node_modules/normalize.css/normalize.css') %>
+    <%- include('/css/index.css') %>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+      ReactDOM.render(
+        React.createElement(ListDiff),
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
