@@ -5,7 +5,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { resolve } = require('path');
 
-describe('Arguments', () => {
+describe.skip('Arguments', () => {
     let prevArgs;
 
     beforeEach(() => {
