@@ -19,7 +19,7 @@ describe('Arguments', () => {
 
     const getArgs = function (...args) {
         process.argv = ['node', 'test', ...args];
-        return require(ARGS_PATH);
+        return require(ARGS_PATH)();
     };
 
     it('should fail if no base argument passed', () => {
