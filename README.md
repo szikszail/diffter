@@ -1,5 +1,7 @@
 # diffter
 
+[![Build Status](https://travis-ci.org/szikszail/diffter.svg?branch=master)](https://travis-ci.org/szikszail/diffter) [![dependency Status](https://david-dm.org/szikszail/diffter.svg)](https://david-dm.org/szikszail/diffter) [![devDependency Status](https://david-dm.org/szikszail/diffter/dev-status.svg)](https://david-dm.org/szikszail/diffter#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/github/szikszail/diffter/badge.svg?branch=master)](https://coveralls.io/github/szikszail/diffter?branch=master)
+
 **diffter** can be used to determine the difference between two list of any items and generate an HTML report about the results.
 
 ## Prerequisites
