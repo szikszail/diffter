@@ -1,0 +1,6 @@
+instrumentaion:
+  root: ./lib
+  extensions:
+    - .js
+  default-excludes: true
+  exclude: [ '**/assets/**' ]
