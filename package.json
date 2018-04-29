@@ -4,9 +4,9 @@
   "description": "diffter can be used to determine the difference between two list of any items and generate an HTML report about the results.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/*.spec.js",
-    "coverage": "istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js",
-    "travis": "istanbul cover --include-all-sources ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "mocha ./test/*.spec.js ./test/cli/*.spec.js",
+    "coverage": "istanbul cover --include-all-sources -x **/assets/** ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
+    "travis": "istanbul cover --include-all-sources -x **/assets/** ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js ./test/cli/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "bin": {
     "diffter-results": "./bin/diffter-results.js",
@@ -28,9 +28,11 @@
   "homepage": "https://github.com/szikszail/diffter#readme",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.1.0",
     "coveralls": "^3.0.0",
-    "istanbul": "^0.4.5"
+    "istanbul": "^0.4.5",
+    "mocha": "^4.1.0",
+    "sinon": "^4.5.0",
+    "proxyquire": "^2.0.1"
   },
   "dependencies": {
     "clean-css": "^4.1.11",

@@ -5,7 +5,9 @@ const {NOT_FOUND, IGNORED} = require('../lib/const');
 const {expect} = require('chai');
 const eql = require('deep-eql');
 
-describe('Create Diff', () => {
+const asTitle = title => ({ title });
+
+describe('.diff', () => {
     it('should work with empty lists', () => {
         expect(diff([], [])).to.eql({
             baseList: [],
@@ -18,7 +20,8 @@ describe('Create Diff', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -31,7 +34,8 @@ describe('Create Diff', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 3, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -45,7 +49,8 @@ describe('Create Diff', () => {
         const baseList = [1, 2, 3, 4];
         const subjectList = [1, 3, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, NOT_FOUND],
@@ -59,7 +64,8 @@ describe('Create Diff', () => {
         const baseList = [1, 4, 3, 2];
         const subjectList = [1, 3, 2, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 3],
@@ -85,7 +91,8 @@ describe('Create Diff', () => {
             {a: 4}
         ];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 4],
@@ -101,7 +108,8 @@ describe('Create Diff', () => {
         const baseList = [1, 2, 2, 3];
         const subjectList = [1, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -115,7 +123,8 @@ describe('Create Diff', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -144,7 +153,8 @@ describe('Create Diff', () => {
         expect(diff(baseList, subjectList, {
             comparator
         })).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 4],
@@ -175,7 +185,8 @@ describe('Create Diff', () => {
         expect(diff(baseList, subjectList, {
             filter
         })).to.eql({
-            baseList, subjectList,
+            baseList: baseList.map(asTitle),
+            subjectList: subjectList.map(asTitle),
             indexes: [
                 [0, 0],
                 [1, 4],
