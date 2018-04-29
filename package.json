@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/*.spec.js ./test/cli/*.spec.js",
-    "coverage": "istanbul cover -i **/*.js -x **/assets/** ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
-    "travis": "istanbul cover -i **/*.js -x **/assets/** ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js ./test/cli/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "coverage": "istanbul cover --include-all-sources -x **/assets/** -x *.html ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
+    "travis": "istanbul cover --include-all-sources -x **/assets/** -x *.html ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js ./test/cli/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "bin": {
     "diffter-results": "./bin/diffter-results.js",

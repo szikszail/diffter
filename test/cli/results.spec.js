@@ -9,7 +9,7 @@ const mocks = {
     save: {
         saveResults: sinon.spy()
     },
-    args: () => ({
+    args: {
         base: 'base',
         subject: 'subject',
         comparator: 'comparator',
@@ -17,7 +17,7 @@ const mocks = {
         transform: 'transform',
         save: 'save',
         js: false
-    })
+    }
 };
 
 describe('cli - results', () => {
