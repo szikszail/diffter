@@ -5,6 +5,6 @@ node_js:
 git:
   depth: 3
 script:
-- npm terun-script travis
+- npm run-script travis
 notifications:
   email: false
