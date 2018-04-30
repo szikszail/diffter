@@ -79,6 +79,7 @@ Type for comparator function, to compare to items in the diff-analyzer.
 **Params**:
 * `{*} base` - the base item
 * `{*} subject` - the subject item
+
 **Returns**: `{boolean}` - `true` if the two items are equal
 
 ### `Filter`
@@ -87,6 +88,7 @@ Type for filter function, to determine items to ignore.
 
 **Params**:
 * `{*} item` - the item to check
+
 **Returns**: `{boolean}` - `true` if the item should be kept
 
 ### `Transform`
@@ -95,4 +97,5 @@ Tyoe for transform function, to convert given items to `DiffListItem`.
 
 **Params**:
 * `{*} item` - the item to transform
+
 **Returns**: `{DiffListItem}` - the transformed item
