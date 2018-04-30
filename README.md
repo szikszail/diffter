@@ -32,6 +32,33 @@ The items are colored in the following way:
 * **Yellow** items in subject list are those which are **new** compared to the base list.
 * **Gray** items are the **ignored** items.
 
+## CLI
+
+```
+Usage:
+diffter-report --base path\to\base.json --subject path\to\subject.json --save report.html
+diffter-results --base path\to\base.json --subject path\to\subject.json --save data.js --js
+
+Options:
+  --help        Show help                                              [boolean]
+  --config      Path to JS/JSON config file
+  --base        Path of BASE results list JSON file.                  [required]
+  --subject     Path of SUBJECT results list JSON file.               [required]
+  --title       Title of the report                          [default: "Report"]
+  --save        Path of JSON file where DiffResults should be saved.  [required]
+  --comparator  Path of JS file which exports custom Comparator function. Config
+                could also contain actual Comparator function.
+  --filter      Path of JS file which exports custom Filter function. Config
+                could also contain actual Filter function.
+  --modifier    Path of JS file which exports custom function to transform
+                source data to display data. Config could also contain actual
+                Transform function.
+  --js          Should the result be save to JS file which exports DiffResults
+                Object.                                         [default: false]
+```
+
+The `--config` can specify a JS/JSON file, which can contain all the above-listed options.
+
 ## API
 
 ### `diff(baseList, subjectList[, options])`
