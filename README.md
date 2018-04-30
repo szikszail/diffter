@@ -34,8 +34,9 @@ The items are colored in the following way:
 
 ## CLI
 
+After `diffter` is installed globally or in local NPM scripts:
+
 ```
-Usage:
 diffter-report --base path\to\base.json --subject path\to\subject.json --save report.html
 diffter-results --base path\to\base.json --subject path\to\subject.json --save data.js --js
 
