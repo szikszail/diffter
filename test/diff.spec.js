@@ -1,27 +1,59 @@
 'use strict';
 
 const diff = require('../lib/diff');
-const {NOT_FOUND, IGNORED} = require('../lib/const');
-const {expect} = require('chai');
+const { NOT_FOUND, IGNORED } = require('../lib/const');
+const { expect } = require('chai');
 const eql = require('deep-eql');
 
 const asTitle = title => ({ title });
 
-describe('.diff', () => {
+describe('Diff', () => {
     it('should work with empty lists', () => {
         expect(diff([], [])).to.eql({
-            baseList: [],
-            subjectList: [],
+            baseList: {
+                title: 'Base',
+                items: []
+            },
+            subjectList: {
+                title: 'Subject',
+                items: []
+            },
             indexes: []
         });
     });
+
+    it('should handle proper data type', () => {
+        const baseList = { title: 'Base List', items: [1, 2, 3] };
+        const subjectList = { title: 'Subject List', items: [1, 2, 3] };
+        expect(diff(baseList, subjectList)).to.eql({
+            baseList: {
+                title: 'Base List',
+                items: baseList.items.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject List',
+                items: subjectList.items.map(asTitle)
+            },
+            indexes: [
+                [0, 0],
+                [1, 1],
+                [2, 2]
+            ]
+        });
+    })
 
     it('should identify identical lists', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -34,8 +66,14 @@ describe('.diff', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 3, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -49,8 +87,14 @@ describe('.diff', () => {
         const baseList = [1, 2, 3, 4];
         const subjectList = [1, 3, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, NOT_FOUND],
@@ -64,8 +108,14 @@ describe('.diff', () => {
         const baseList = [1, 4, 3, 2];
         const subjectList = [1, 3, 2, 4];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 3],
@@ -77,22 +127,28 @@ describe('.diff', () => {
 
     it('should work with objects too', () => {
         const baseList = [
-            {a: 1}, 
-            {a: 4}, 
-            {b: 1},
-            {a: 3}, 
-            {a: 2}
+            { a: 1 },
+            { a: 4 },
+            { b: 1 },
+            { a: 3 },
+            { a: 2 }
         ];
         const subjectList = [
-            {a: 1}, 
-            {a: 3},
-            {c: 1}, 
-            {a: 2}, 
-            {a: 4}
+            { a: 1 },
+            { a: 3 },
+            { c: 1 },
+            { a: 2 },
+            { a: 4 }
         ];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 4],
@@ -108,8 +164,14 @@ describe('.diff', () => {
         const baseList = [1, 2, 2, 3];
         const subjectList = [1, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -123,8 +185,14 @@ describe('.diff', () => {
         const baseList = [1, 2, 3];
         const subjectList = [1, 2, 2, 3];
         expect(diff(baseList, subjectList)).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 1],
@@ -136,25 +204,31 @@ describe('.diff', () => {
 
     it('should handle custom comparator function', () => {
         const baseList = [
-            {a: 1}, 
-            {a: 4},
-            {a: 3}, 
-            {b: 1}, 
-            {a: 2}
+            { a: 1 },
+            { a: 4 },
+            { a: 3 },
+            { b: 1 },
+            { a: 2 }
         ];
         const subjectList = [
-            {a: 1},
-            {c: 1}, 
-            {a: 3}, 
-            {a: 2}, 
-            {a: 4}
+            { a: 1 },
+            { c: 1 },
+            { a: 3 },
+            { a: 2 },
+            { a: 4 }
         ];
         const comparator = (o1, o2) => (o1.a || o2.a) ? o1.a === o2.a : eql(o1, o2);
         expect(diff(baseList, subjectList, {
             comparator
         })).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 4],
@@ -165,28 +239,34 @@ describe('.diff', () => {
             ]
         });
     });
-    
+
     it('should handle custom filter function', () => {
         const baseList = [
-            {a: 1}, 
-            {a: 4},
-            {a: 3}, 
-            {b: 1}, 
-            {a: 2}
+            { a: 1 },
+            { a: 4 },
+            { a: 3 },
+            { b: 1 },
+            { a: 2 }
         ];
         const subjectList = [
-            {a: 1},
-            {c: 1}, 
-            {a: 3}, 
-            {a: 2}, 
-            {a: 4}
+            { a: 1 },
+            { c: 1 },
+            { a: 3 },
+            { a: 2 },
+            { a: 4 }
         ];
         const filter = e => e.a;
         expect(diff(baseList, subjectList, {
             filter
         })).to.eql({
-            baseList: baseList.map(asTitle),
-            subjectList: subjectList.map(asTitle),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(asTitle)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(asTitle)
+            },
             indexes: [
                 [0, 0],
                 [1, 4],
@@ -200,29 +280,35 @@ describe('.diff', () => {
 
     it('should handle custom transform function', () => {
         const baseList = [
-            {a: 1}, 
-            {a: 4},
-            {a: 3}, 
-            {b: 1}, 
-            {a: 2}
+            { a: 1 },
+            { a: 4 },
+            { a: 3 },
+            { b: 1 },
+            { a: 2 }
         ];
         const subjectList = [
-            {a: 1},
-            {c: 1}, 
-            {a: 3}, 
-            {a: 2}, 
-            {a: 4}
+            { a: 1 },
+            { c: 1 },
+            { a: 3 },
+            { a: 2 },
+            { a: 4 }
         ];
         const transform = e => JSON.stringify(e);
         expect(diff(
-            baseList, 
-            subjectList, 
+            baseList,
+            subjectList,
             {
                 transform
             }
         )).to.eql({
-            baseList: baseList.map(transform),
-            subjectList: subjectList.map(transform),
+            baseList: {
+                title: 'Base',
+                items: baseList.map(transform)
+            },
+            subjectList: {
+                title: 'Subject',
+                items: subjectList.map(transform)
+            },
             indexes: [
                 [0, 0],
                 [1, 4],

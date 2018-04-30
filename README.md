@@ -37,8 +37,62 @@ The items are colored in the following way:
 ### `diff(baseList, subjectList[, options])`
 
 **Params**:
-* `{Array} baseList` - the list of items used as the base list
-* `{Array} subjectList` - the list of subject items which are compared to the base list
+* `{SourceList|Array} baseList` - the list of items used as the base list
+* `{SourceList|Array} subjectList` - the list of subject items which are compared to the base list
 * `{DiffOptions} options` - options could be passed to the analyzer.
 
 **Returns**: `{DiffResults}` the results of the analysis
+
+## Types
+
+### `SourceList`
+
+Type of a list as input for given methods.
+
+* `{string} title` - the title/name of the list
+* `{Array} items` - the actual items of the list
+
+### `DiffResults`
+
+TBD
+
+### `DiffList`
+
+TBD
+
+### `DiffListItem`
+
+TBD
+
+### `DiffOptions`
+
+Type to define options of diff-analysis.
+
+* `{Comparator} comparator` - the comparator function, by default: [deep-eql](https://www.npmjs.com/package/deep-eql)
+* `{Filter} filter` - the filter funtion, by default: `() => true`
+* `{Transform} transform` - the transform function, by default: `item => item`
+
+### `Comparator`
+
+Type for comparator function, to compare to items in the diff-analyzer.
+
+**Params**:
+* `{*} base` - the base item
+* `{*} subject` - the subject item
+**Returns**: `{boolean}` - `true` if the two items are equal
+
+### `Filter`
+
+Type for filter function, to determine items to ignore.
+
+**Params**:
+* `{*} item` - the item to check
+**Returns**: `{boolean}` - `true` if the item should be kept
+
+### `Transform`
+
+Tyoe for transform function, to convert given items to `DiffListItem`.
+
+**Params**:
+* `{*} item` - the item to transform
+**Returns**: `{DiffListItem}` - the transformed item

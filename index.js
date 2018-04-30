@@ -31,6 +31,18 @@
  */
 
 /**
+ * @typedef {Object} SourceList
+ * @property {Array} items The actual items of the list.
+ * @property {string} title The title of the list.
+ */
+
+/**
+ * @typedef {Object} DiffList
+ * @property {Array<DiffListItem>} items The actual items of the list.
+ * @property {string} title The title of the list.
+ */
+
+/**
  * @typedef {Object} DiffListItem
  * @property {string} title The display title of item.
  * @property {Object} metadata Any metadata of the given item.
@@ -38,8 +50,8 @@
 
 /**
  * @typedef {Object} DiffResults
- * @property {Array<DiffListItem>} baseList The base list of items.
- * @property {Array<DiffListItem>} subjectList The subject list of items.
+ * @property {DiffList} baseList The base list of items.
+ * @property {DiffList} subjectList The subject list of items.
  * @property {Array<DiffIndexes>} indexes The indexes list.
  */
 

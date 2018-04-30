@@ -57,8 +57,8 @@ describe('Arguments', () => {
             '--save', 'test/data'
         );
 
-        expect(args.base).to.eql(require('../data/base.json'));
-        expect(args.subject).to.eql(require('../data/subject.json'));
+        expect(args.base).to.eql({items: require('../data/base.json')});
+        expect(args.subject).to.eql({items: require('../data/subject.json')});
         expect(args.save).to.equal(resolve('test/data'));
     });
 
