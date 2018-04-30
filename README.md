@@ -67,6 +67,13 @@ Type of a list as input for given methods.
 * `{string} title` - the title/name of the list
 * `{Array} items` - the actual items of the list
 
+```json
+{
+    "title": "Souce List",
+    "items": [1, 2, 3]
+}
+```
+
 ### `DiffResults`
 
 Type of the diff-analysis results.
@@ -75,12 +82,49 @@ Type of the diff-analysis results.
 * `{DiffList} subjectList` - the items of the subject list
 * `{Array<Array<number>>} indexes` - the list of indexes/states
 
+```json
+{
+    "baseList": {
+        "title": "Base List",
+        "items": [
+            {"title": 1},
+            {"title": 2},
+            {"title": 3}
+        ]
+    },
+    "subjectList": {
+        "title": "Subject List",
+        "items": [
+            {"title": 1},
+            {"title": 3},
+            {"title": 2}
+        ]
+    },
+    "indexes": [
+        [0, 0],
+        [1, 2],
+        [2, 1]
+    ]
+}
+```
+
 ### `DiffList`
 
 Type for a list to store result items.
 
 * `{string} title` - the title/name of the list
 * `{Array<DiffListItem>} items` - the actual items of the list
+
+```json
+{
+    "title": "Subject List",
+    "items": [
+        {"title": 1},
+        {"title": 3},
+        {"title": 2}
+    ]
+}
+```
 
 ### `DiffListItem`
 
@@ -89,6 +133,12 @@ Type for an item of a list.
 * `{string} title` - the title/name of the actual item
 * `{Object} metadata` - any metadata (key-value pair) of the given item
 
+```json
+{
+    "title": 2
+}
+```
+
 ### `DiffOptions`
 
 Type to define options of diff-analysis.
@@ -96,6 +146,16 @@ Type to define options of diff-analysis.
 * `{Comparator} comparator` - the comparator function, by default: [deep-eql](https://www.npmjs.com/package/deep-eql)
 * `{Filter} filter` - the filter funtion, by default: `() => true`
 * `{Transform} transform` - the transform function, by default: `item => item`
+
+```javascript
+module.exports = {
+    comparator: (a, b) => a === b,
+    filter: item => !item.ignore,
+    transform: item => ({
+        title: item
+    })
+}
+```
 
 ### `Comparator`
 
