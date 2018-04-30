@@ -43,6 +43,21 @@ The items are colored in the following way:
 
 **Returns**: `{DiffResults}` the results of the analysis
 
+### `saveReport(filePath, title, results)`
+
+**Params**:
+* `{string} filePath` - the path to the file, where report needs to be stored
+* `{string} title` - the title of the report
+* `{DiffResults} results` - the results needs to be displayed in report
+
+### `saveResults(filePath, results[, type[, jsPrefix]])`
+
+**Params**:
+* `{string} filePath` - the path to the file, where results needs to be stored
+* `{DiffResults} results` - the results needs to be stored in the file
+* `{string} type` - the type of the file to store the results, `js` or `json`, default: `json`
+* `{string} jsPrefix` - the prefix which needs to be used in case of storing to JS, default: `module.exports = `
+
 ## Types
 
 ### `SourceList`
@@ -54,15 +69,25 @@ Type of a list as input for given methods.
 
 ### `DiffResults`
 
-TBD
+Type of the diff-analysis results.
+
+* `{DiffList} baseList` - the items of the base list
+* `{DiffList} subjectList` - the items of the subject list
+* `{Array<Array<number>>} indexes` - the list of indexes/states
 
 ### `DiffList`
 
-TBD
+Type for a list to store result items.
+
+* `{string} title` - the title/name of the list
+* `{Array<DiffListItem>} items` - the actual items of the list
 
 ### `DiffListItem`
 
-TBD
+Type for an item of a list.
+
+* `{string} title` - the title/name of the actual item
+* `{Object} metadata` - any metadata (key-value pair) of the given item
 
 ### `DiffOptions`
 
@@ -93,7 +118,7 @@ Type for filter function, to determine items to ignore.
 
 ### `Transform`
 
-Tyoe for transform function, to convert given items to `DiffListItem`.
+Type for transform function, to convert given items to `DiffListItem`.
 
 **Params**:
 * `{*} item` - the item to transform
