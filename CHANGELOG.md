@@ -4,7 +4,7 @@
 
 ### Fixed
 
-* saveReport does not work, when diffter used as dependency (#1)
+* saveReport does not work, when diffter used as dependency ([#1](https://github.com/szikszail/diffter/issues/1))
 
 ## 1.0.0 - 2018-04-30
 
