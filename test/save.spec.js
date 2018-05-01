@@ -78,7 +78,7 @@ describe('save', () => {
             expect(mocks.fs.writeFileSync.lastCall.args[0]).to.equal('test.html');
             expect(mocks.fs.readFileSync.lastCall.args[0]).to.match(/assets.index\.html/);
             expect(mocks.ejs.render.lastCall.args[0]).to.equal('content');
-            expect(mocks.ejs.render.lastCall.args[1]).to.eql({
+            expect(mocks.ejs.render.lastCall.args[1]).to.deep.include({
                 results: [],
                 title: 'Title'
             });
@@ -91,7 +91,7 @@ describe('save', () => {
             expect(mocks.fs.writeFileSync.lastCall.args[0]).to.equal('test.html');
             expect(mocks.fs.readFileSync.lastCall.args[0]).to.match(/assets.index\.html/);
             expect(mocks.ejs.render.lastCall.args[0]).to.equal('content');
-            expect(mocks.ejs.render.lastCall.args[1]).to.eql({
+            expect(mocks.ejs.render.lastCall.args[1]).to.deep.include({
                 results: [],
                 title: 'Title'
             });
