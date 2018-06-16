@@ -5,20 +5,22 @@
     <title><%= title %></title>
     <%- include(inPackage('react', 'umd', 'react.production.min.js')) %>
     <%- include(inPackage('react-dom', 'umd', 'react-dom.production.min.js')) %>
+    <%- include(inPackage('react-tooltip', 'standalone', 'react-tooltip.min.js')) %>
     <script>
       var DiffData = <%- JSON.stringify(results) %>;
     </script>
-    <%- include('/js/index.js') %>
+    <%- include('/js/globals.js') %>
+    <%- include('/js/canvas.js') %>
+    <%- include('/js/diff/canvas.js') %>
+    <%- include('/js/diff/header.js') %>
+    <%- include('/js/diff/item.js') %>
+    <%- include('/js/diff/table.js') %>
     <%- include(inPackage('normalize.css', 'normalize.css')) %>
     <%- include('/css/index.css') %>
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/javascript">
-      ReactDOM.render(
-        React.createElement(ListDiff),
-        document.getElementById('root')
-      );
-    </script>
+    <div id="tooltip"></div>
+    <%- include('/js/index.js') %>
   </body>
 </html>
