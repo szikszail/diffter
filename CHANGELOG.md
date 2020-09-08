@@ -1,5 +1,11 @@
 # Release notes
 
+## 1.1.1 - 2020-09-08
+
+### Changed
+
+* Updated dependencies
+
 ## 1.1.0 - 2018-06-16
 
 ### Added
