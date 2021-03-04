@@ -1,5 +1,15 @@
 # Release notes
 
+## 1.2.0 - 2021-03-04
+
+### Added
+
+* Added `.d.ts`
+
+### Fixed 
+
+* Fixed missing metadata of items
+
 ## 1.1.1 - 2020-09-08
 
 ### Changed

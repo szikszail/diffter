@@ -1,12 +1,12 @@
 {
   "name": "diffter",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "diffter can be used to determine the difference between two list of any items and generate an HTML report about the results.",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "mocha ./test/*.spec.js ./test/cli/*.spec.js",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
-    "travis": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib --report lcovonly -- ./test/*.spec.js ./test/cli/*.spec.js -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js"
   },
   "bin": {
     "diffter-results": "./bin/diffter-results.js",
@@ -20,6 +20,9 @@
     "list",
     "diff"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "author": "Laszlo Szikszai <sziklaszlo@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -30,29 +33,30 @@
     "lib/**",
     "bin/**",
     "index.js",
+    "index.d.ts",
     "*.md",
     "LICENSE",
     "example.png"
   ],
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.1.0",
+    "chai": "^4.3.3",
     "istanbul": "^0.4.5",
-    "mocha": "^8.1.3",
-    "sinon": "^9.0.3",
-    "proxyquire": "^2.1.3"
+    "mocha": "^8.3.0",
+    "proxyquire": "^2.1.3",
+    "sinon": "^9.2.4"
   },
   "dependencies": {
-    "clean-css": "^4.2.3",
+    "clean-css": "^5.1.1",
+    "debug": "^4.3.1",
     "deep-eql": "^4.0.0",
-    "ejs": "^3.1.5",
-    "fs-extra": "^9.0.1",
+    "ejs": "^3.1.6",
+    "fs-extra": "^9.1.0",
     "normalize.css": "^8.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-tooltip": "^4.2.9",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-tooltip": "^4.2.15",
     "require-it": "^2.0.0",
     "uglify-es": "^3.3.9",
-    "yargs": "^15.4.1"
+    "yargs": "^16.2.0"
   }
 }
