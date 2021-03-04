@@ -1,19 +1,25 @@
-# diffter
+react-tooltip.min# diffter
 
-[![Build Status](https://travis-ci.org/szikszail/diffter.svg?branch=master)](https://travis-ci.org/szikszail/diffter) [![dependency Status](https://david-dm.org/szikszail/diffter.svg)](https://david-dm.org/szikszail/diffter) [![devDependency Status](https://david-dm.org/szikszail/diffter/dev-status.svg)](https://david-dm.org/szikszail/diffter#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/github/szikszail/diffter/badge.svg?branch=master)](https://coveralls.io/github/szikszail/diffter?branch=master)
+![Downloads](https://img.shields.io/npm/dw/diffter?style=flat-square)
+![Version@npm](https://img.shields.io/npm/v/diffter?label=version%40npm&style=flat-square)
+![Version@git](https://img.shields.io/github/package-json/v/szikszail/diffter/master?label=version%40git&style=flat-square)
+![CI](https://img.shields.io/github/workflow/status/szikszail/diffter/Node.js%20CI/master?label=ci&style=flat-square)
 
 **diffter** can be used to determine the difference between two list of any items and generate an HTML report about the results.
 
 ## Prerequisites
 
-* NodeJS 6+
+* Node.js 10+
 
 ## Usage
 
 The following script generated the report can be seen below:
 
-```javascript
-const {diff, saveReport} = require('diffter');
+``` javascript
+const {
+    diff,
+    saveReport
+} = require('diffter');
 
 const baseList = [1, 2, 3, 4];
 const subjectList = [1, 3, 4, 5];
@@ -36,7 +42,7 @@ The items are colored in the following way:
 
 After `diffter` is installed globally or in local NPM scripts:
 
-```
+``` 
 diffter-report --base path\to\base.json --subject path\to\subject.json --save report.html
 diffter-results --base path\to\base.json --subject path\to\subject.json --save data.js --js
 
@@ -65,6 +71,7 @@ The `--config` can specify a JS/JSON file, which can contain all the above-liste
 ### `diff(baseList, subjectList[, options])`
 
 **Params**:
+
 * `{SourceList|Array} baseList` - the list of items used as the base list
 * `{SourceList|Array} subjectList` - the list of subject items which are compared to the base list
 * `{DiffOptions} options` - options could be passed to the analyzer.
@@ -74,6 +81,7 @@ The `--config` can specify a JS/JSON file, which can contain all the above-liste
 ### `saveReport(filePath, title, results)`
 
 **Params**:
+
 * `{string} filePath` - the path to the file, where report needs to be stored
 * `{string} title` - the title of the report
 * `{DiffResults} results` - the results needs to be displayed in report
@@ -81,9 +89,10 @@ The `--config` can specify a JS/JSON file, which can contain all the above-liste
 ### `saveResults(filePath, results[, type[, jsPrefix]])`
 
 **Params**:
+
 * `{string} filePath` - the path to the file, where results needs to be stored
 * `{DiffResults} results` - the results needs to be stored in the file
-* `{string} type` - the type of the file to store the results, `js` or `json`, default: `json`
+* `{string} type` - the type of the file to store the results,  `js` or `json`, default: `json`
 * `{string} jsPrefix` - the prefix which needs to be used in case of storing to JS, default: `module.exports = `
 
 ## Types
@@ -95,7 +104,7 @@ Type of a list as input for given methods.
 * `{string} title` - the title/name of the list
 * `{Array} items` - the actual items of the list
 
-```json
+``` json
 {
     "title": "Souce List",
     "items": [1, 2, 3]
@@ -110,7 +119,7 @@ Type of the diff-analysis results.
 * `{DiffList} subjectList` - the items of the subject list
 * `{Array<Array<number>>} indexes` - the list of indexes/states
 
-```json
+``` json
 {
     "baseList": {
         "title": "Base List",
@@ -143,7 +152,7 @@ Type for a list to store result items.
 * `{string} title` - the title/name of the list
 * `{Array<DiffListItem>} items` - the actual items of the list
 
-```json
+``` json
 {
     "title": "Subject List",
     "items": [
@@ -161,7 +170,7 @@ Type for an item of a list.
 * `{string} title` - the title/name of the actual item
 * `{Object} metadata` - any metadata (key-value pair) of the given item
 
-```json
+``` json
 {
     "title": 2
 }
@@ -175,7 +184,7 @@ Type to define options of diff-analysis.
 * `{Filter} filter` - the filter funtion, by default: `() => true`
 * `{Transform} transform` - the transform function, by default: `item => item`
 
-```javascript
+``` javascript
 module.exports = {
     comparator: (a, b) => a === b,
     filter: item => !item.ignore,
@@ -190,6 +199,7 @@ module.exports = {
 Type for comparator function, to compare to items in the diff-analyzer.
 
 **Params**:
+
 * `{*} base` - the base item
 * `{*} subject` - the subject item
 
@@ -200,15 +210,17 @@ Type for comparator function, to compare to items in the diff-analyzer.
 Type for filter function, to determine items to ignore.
 
 **Params**:
+
 * `{*} item` - the item to check
 
 **Returns**: `{boolean}` - `true` if the item should be kept
 
 ### `Transform`
 
-Type for transform function, to convert given items to `DiffListItem`.
+Type for transform function, to convert given items to `DiffListItem` .
 
 **Params**:
+
 * `{*} item` - the item to transform
 
 **Returns**: `{DiffListItem}` - the transformed item

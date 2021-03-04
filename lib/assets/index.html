@@ -5,7 +5,7 @@
     <title><%= title %></title>
     <%- include(inPackage('react', 'umd', 'react.production.min.js')) %>
     <%- include(inPackage('react-dom', 'umd', 'react-dom.production.min.js')) %>
-    <%- include(inPackage('react-tooltip', 'standalone', 'react-tooltip.min.js')) %>
+    <%- include(inPackage('react-tooltip', 'dist', 'index.js')) %>
     <script>
       var DiffData = <%- JSON.stringify(results) %>;
     </script>
