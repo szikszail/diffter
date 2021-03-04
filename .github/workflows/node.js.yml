@@ -4,12 +4,6 @@
 name: Node.js CI
 
 on:
-  push:
-    branches:
-     - master
-     - 'feature/**'
-     - 'bugfix/**'
-     - 'hotfix/**'
   pull_request:
     branches: [ master ]
   workflow_dispatch:
