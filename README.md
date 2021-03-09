@@ -1,4 +1,4 @@
-react-tooltip.min# diffter
+# diffter
 
 ![Downloads](https://img.shields.io/npm/dw/diffter?style=flat-square)
 ![Version@npm](https://img.shields.io/npm/v/diffter?label=version%40npm&style=flat-square)
