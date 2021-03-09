@@ -1,6 +1,6 @@
 {
   "name": "diffter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "diffter can be used to determine the difference between two list of any items and generate an HTML report about the results.",
   "main": "index.js",
   "typings": "index.d.ts",
