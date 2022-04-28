@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.2.1 - 1.2.2
+
+Security fixes
+
 ## 1.2.0 - 2021-03-04
 
 ### Added
