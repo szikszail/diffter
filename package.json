@@ -1,6 +1,6 @@
 {
   "name": "diffter",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "diffter can be used to determine the difference between two list of any items and generate an HTML report about the results.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -49,14 +49,14 @@
     "clean-css": "^5.1.1",
     "debug": "^4.3.1",
     "deep-eql": "^4.0.1",
-    "ejs": "^3.1.6",
+    "ejs": "^3.1.7",
     "fs-extra": "^9.1.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-tooltip": "^4.2.15",
     "require-it": "^2.0.0",
-    "uglify-es": "^3.3.9",
+    "uglify-es": "^3.3.10",
     "yargs": "^16.2.0"
   }
 }
