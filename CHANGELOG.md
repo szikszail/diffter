@@ -1,5 +1,10 @@
 # Release notes
 
+## 1.3.0
+
+* Dropped support for Node.js 10
+* Security fixes
+
 ## 1.2.1 - 1.2.2
 
 Security fixes
