@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-* Node.js 10+
+* Node.js 12+
 
 ## Usage
 
