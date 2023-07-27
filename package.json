@@ -6,7 +6,8 @@
   "typings": "index.d.ts",
   "scripts": {
     "test": "mocha ./test/*.spec.js ./test/cli/*.spec.js",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js"
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
+    "build": "npm test"
   },
   "bin": {
     "diffter-results": "./bin/diffter-results.js",
