@@ -7,7 +7,8 @@
   "scripts": {
     "test": "mocha ./test/*.spec.js ./test/cli/*.spec.js",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --root ./lib -- ./test/*.spec.js ./test/cli/*.spec.js",
-    "build": "npm run coverage"
+    "clover": "istanbul report clover",
+    "build": "npm run coverage && npm run clover"
   },
   "bin": {
     "diffter-results": "./bin/diffter-results.js",

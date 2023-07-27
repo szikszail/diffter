@@ -11,5 +11,4 @@ on:
 jobs:
   call_npm_package_build:
     uses: szikszail/workflows/.github/workflows/npm-package-build.yml@v1
-    with:
-      coverage_path: 'coverage/coverage.json'
+    
