@@ -3,7 +3,7 @@
 ![Downloads](https://img.shields.io/npm/dw/diffter?style=flat-square)
 ![Version@npm](https://img.shields.io/npm/v/diffter?label=version%40npm&style=flat-square)
 ![Version@git](https://img.shields.io/github/package-json/v/szikszail/diffter/master?label=version%40git&style=flat-square)
-![CI](https://img.shields.io/github/workflow/status/szikszail/diffter/Node.js%20CI/master?label=ci&style=flat-square)
+![CI](https://img.shields.io/github/actions/workflow/status/szikszail/diffter/ci.yml?branch=master&label=ci&style=flat-square)
 
 **diffter** can be used to determine the difference between two list of any items and generate an HTML report about the results.
 
